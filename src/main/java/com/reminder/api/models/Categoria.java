@@ -1,15 +1,19 @@
 package com.reminder.api.models;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.config.EnableMongoAuditing;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.index.TextIndexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.TextScore;
 
 @Document
+@EnableMongoAuditing
 public class Categoria implements Serializable{
 	private static final long serialVersionUID = 1L;
 
@@ -23,6 +27,9 @@ public class Categoria implements Serializable{
 	
 	@TextScore
 	private Float score;
+	
+	@CreatedDate
+	private Date data;
 	
 	public Categoria() {
 	
@@ -42,6 +49,14 @@ public class Categoria implements Serializable{
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+
+	public Date getData() {
+		return data;
+	}
+
+	public void setData(Date data) {
+		this.data = data;
 	}
 
 	public Float getScore() {

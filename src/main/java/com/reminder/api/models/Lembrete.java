@@ -4,13 +4,16 @@ import java.io.Serializable;
 import java.util.Date;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.config.EnableMongoAuditing;
 import org.springframework.data.mongodb.core.index.TextIndexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.TextScore;
 
 @Document
+@EnableMongoAuditing
 public class Lembrete implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
@@ -21,6 +24,7 @@ public class Lembrete implements Serializable{
 	@TextIndexed
 	private String descricao;
 	
+	@CreatedDate
 	private Date data;
 	
 	@DBRef
