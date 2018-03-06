@@ -90,7 +90,8 @@ public class CategoriaController {
 
 	@DeleteMapping(path = "/{id}")
 	public ResponseEntity<Response<Integer>> remover(@PathVariable(name = "id") String id) {
-		this.categoriaService.remover(id);
+		Categoria categoria = this.categoriaService.listarPorId(id);
+		this.categoriaService.remover(categoria.getId());
 		return ResponseEntity.ok(new Response<Integer>(1));
 	}
 }

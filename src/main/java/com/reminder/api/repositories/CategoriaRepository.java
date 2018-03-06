@@ -12,6 +12,6 @@ public interface CategoriaRepository extends MongoRepository<Categoria, String> 
 	
 	public List<Categoria> findAllBy(TextCriteria criteria, Pageable pages);
 	
-	public List<Categoria> findByDescricaoLikeIgnoreCase(String descricao);
+	public List<Categoria> findByDescricaoLikeIgnoreCase(String descricao);	
 
 }
